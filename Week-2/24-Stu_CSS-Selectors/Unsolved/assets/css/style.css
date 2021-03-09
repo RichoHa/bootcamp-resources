@@ -1,3 +1,7 @@
+a[href$=".css"]::after {
+  content:"📝";
+}
+
 body {
   display: flex;
   flex-direction: column;
