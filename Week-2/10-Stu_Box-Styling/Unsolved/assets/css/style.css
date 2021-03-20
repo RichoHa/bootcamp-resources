@@ -70,7 +70,7 @@ footer {
   border-width: 1px;
   padding: 10px;
   margin: 20px;
-  flex: 0 0 300px;
+  flex: 0 0 400px;
   border-radius: 2em;
   transform: rotate(10deg);
   box-shadow: grey;
@@ -79,7 +79,6 @@ footer {
 .card header {
   padding: 20px;
   border-radius: 2em 2em 0 0;
-
 }
 
 .card p {
@@ -90,6 +89,8 @@ footer {
   width: 100%;
   border-radius: 0 0 2em 2em;
 }
+
+
 
 @media screen and (max-width: 768px) {
   main,
