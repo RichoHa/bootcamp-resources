@@ -7,7 +7,7 @@
  var changeP = document.querySelector("#change2");
 
 // Sets first pTags to have a font-size of 40px
- pTags[0].setAttribute("style", "font-size: 40px;");
+ pTags[0].setAttribute("style", "font-size: 100px;");
 
 // Sets changeP to have multiple style attributes
  changeP.setAttribute("style", "font-size: 25px; font-weight: bold; text-decoration:underline; ");

@@ -1,7 +1,9 @@
 // This statement will log the "window".
+// Return - Window.
 console.log(window);
 
 // This will refer to the document element.
+//return #document
 console.log(window.document);
 
 // This will refer to the whole HTML.
