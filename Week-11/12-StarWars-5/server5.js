@@ -5,8 +5,17 @@ const app = express();
 const PORT = 3000;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+//
+//What does urlencoded() function return?
+const middlewearFunction = express.urlencoded({extended:true});
+
+//What does use() expect as a parameter?
+//It expects a middleware function
+app.use(middlewearFunction);
+
+//
+const middlewearFunction2 =  express.json()
+app.use(middlewearFunction2);
 
 // Data
 const characters = [
@@ -57,6 +66,13 @@ app.get('/api/characters/:character', (req, res) => {
 });
 
 // Create New Characters - takes in JSON input
+// POST http://localhost:3000/api/characters
+//What is the server expected to receive, client is sennding data, what data?
+//URL encoded JSON string that represents a new starwars character.
+//curl -X POST http://localhost:30000/api/characters? (safe JSON URL encoded...)-H "Contect-Type: application/json"
+//need to put the information in the body.
+//curl POST http://localhost:30000/api/characters -d ( JSON code without white spaces...) -H (safe JSON URL encoded...)-H "Contect-Type: application/json"
+
 app.post('/api/characters', (req, res) => {
   const newCharacter = req.body;
 

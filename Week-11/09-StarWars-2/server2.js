@@ -29,18 +29,50 @@ const characters = [
   },
 ];
 
-// Routes
+//Routes which a client can get...
+//http://localhost:3000/GET
+//"Welcome to the Star Wars Page!" --- Content type --> "plaint/text" or 
+//check documentation in express.
+//how to tell if the header content type/MIME type text/plain.
+//to check content type of the response..
+//package manager which is being used is NPM node package manager -- Express.
+//package.json has all the modules which is being used. 
+//npm install (don't include express)--> this will include express.
+//npm installs other files which it needs to function also..
+//To run server --> npm run --> checks Json package scripts requires start"""
+//npm run watch
+//curl -i -X GET http://localhost:3000/
+
+
 app.get('/', (req, res) => {
   res.send('Welcome to the Star Wars Page!');
 });
 
-app.get('/:character', (req, res) => {
+function getChosenCharacter(characterPath){
+  for (const character of characters){
+    if(character.routeName === characterPath){
+      return character;
+    }
+  }
+}
+
+app.get('/:character', (req, res) => {//having two slashes will mean it will save two sections of the path..
   const chosen = req.params.character;
 
-  // What does this log?
-  console.log(chosen);
+  //requestParameters (request.params) is an object{}
+  //character is property which is created
 
-  res.end();
+  // What does this log?
+
+
+  const chosenCharacter = getChosenCharacter(chosen)
+  
+  if(typeof chosenCharacter === `object`){
+    res.end(chosenCharacter);
+  }else{
+  res.status(404)
+  res.send(`No Character can be found`)
+  }
 });
 
 // Listener

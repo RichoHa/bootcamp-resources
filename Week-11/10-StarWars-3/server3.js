@@ -1,4 +1,7 @@
 // Dependencies
+//npm install 
+//npm run watch
+//curl -i -X GET http://localhost:3000/
 const express = require('express');
 
 const app = express();
@@ -55,7 +58,7 @@ app.get('/api/characters/:character', (req, res) => {
   }
 
   // What does this code do?
-  return res.send('No character found');
+  return res.status(404).send('No character found');
 });
 
 // Listener
