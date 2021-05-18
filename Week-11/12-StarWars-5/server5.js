@@ -69,9 +69,10 @@ app.get('/api/characters/:character', (req, res) => {
 // POST http://localhost:3000/api/characters
 //What is the server expected to receive, client is sennding data, what data?
 //URL encoded JSON string that represents a new starwars character.
-//curl -X POST http://localhost:30000/api/characters? (safe JSON URL encoded...)-H "Contect-Type: application/json"
-//need to put the information in the body.
-//curl POST http://localhost:30000/api/characters -d ( JSON code without white spaces...) -H (safe JSON URL encoded...)-H "Contect-Type: application/json"
+
+//curl -X POST http://localhost:30000/api/characters? -d '{(safe JSON URL encoded...)}' -H "Contect-Type: application/json"
+
+
 
 app.post('/api/characters', (req, res) => {
   const newCharacter = req.body;
