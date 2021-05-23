@@ -73,6 +73,11 @@ const createProduct = () => {
       price: 3.0,
       quantity: 50,
     },
+    {
+      flavor: 'Rocky Road2',
+      price: 3.2,
+      quantity: 52,
+    },
     (err, res) => {
       if (err) throw err;
       console.log(`${res.affectedRows} product inserted!\n`);

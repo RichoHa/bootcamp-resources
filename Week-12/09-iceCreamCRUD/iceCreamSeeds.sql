@@ -24,3 +24,10 @@ VALUES ("strawberry", 3.25, 75);
 -- ### Alternative way to insert more than one row
 -- INSERT INTO products (flavor, price, quantity)
 -- VALUES ("vanilla", 2.50, 100), ("chocolate", 3.10, 120), ("strawberry", 3.25, 75);
+
+insert into products set flavour="Rocky Road", price= 1, quantity= 50;
+insert into products set flavour="Rocky Road 2", price= 1, quantity= 50;
+
+update products set quantity =100 where flavour = "Rocky Road";
+
+delete from products where flavour="strawberry";

@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -14,8 +14,29 @@ const connection = mysql.createConnection({
   database: 'ice_creamDB',
 });
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log(`connected as id ${connection.threadId}`);
-  connection.end();
-});
+
+function functionToCallAfterQueryingTheDataBase(error,results){
+  if(error){
+    connection.query("Something went wrong: ", error)
+  }else{
+    console.log("here are your results: ", results)
+    connection.end();
+  }
+}
+
+function functionToCallAfterConnecting(error){
+  if(error){
+    console.log("Ooopsie...", error.message);
+  }else{
+    connection.query("select * from products", functionToCallAfterQueryingTheDataBase)
+  }
+}
+
+
+// connection.connect((err) => {
+//   if (err) throw err;
+//   console.log(`connected as id ${connection.threadId}`);
+//   connection.end();
+// });
+
+connection.connect(functionToCallAfterConnecting);

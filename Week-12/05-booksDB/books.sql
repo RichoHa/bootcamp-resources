@@ -21,7 +21,12 @@ INSERT INTO authors (firstName, lastName) values ('Mark', 'Twain');
 INSERT INTO authors (firstName, lastName) values ('Lewis', 'Carroll');
 INSERT INTO authors (firstName, lastName) values ('Andre', 'Asselin');
 
+select id from authors where lastName = "Austin" and firstName = "Jane";
+
 INSERT INTO books (title, authorId) values ('Pride and Prejudice', 1);
+-- same as below
+-- INSERT INTO books (title, authorId) values ('Pride and Prejudice', (select id from authors where lastName = "Austin" and firstName = "Jane")));
+
 INSERT INTO books (title, authorId) values ('Emma', 1);
 INSERT INTO books (title, authorId) values ('The Adventures of Tom Sawyer', 2);
 INSERT INTO books (title, authorId) values ('Adventures of Huckleberry Finn', 2);
@@ -48,3 +53,6 @@ LEFT JOIN authors ON books.authorId = authors.id;
 SELECT title, firstName, lastName
 FROM books
 RIGHT JOIN authors ON books.authorId = authors.id;
+
+-- show everybook that has an author (Joining two tables)
+-- select books.title.authors.firstname.authors.lastname from books inner join authors on book.authorID = authors.id;

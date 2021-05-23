@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql/promise');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -27,3 +27,7 @@ connection.connect((err) => {
   console.log(`connected as id ${connection.threadId}`);
   afterConnection();
 });
+
+//
+
+const 

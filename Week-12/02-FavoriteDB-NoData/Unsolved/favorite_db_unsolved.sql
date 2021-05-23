@@ -7,6 +7,7 @@ CREATE DATABASE favorite_db;
 
 -- Creates the table "favorite_foods" within favorite_db --
 CREATE TABLE favorite_foods (
+	food
   -- Make a string column called "food" which cannot contain null --
   -- Make an numeric column called "score" --
 );
