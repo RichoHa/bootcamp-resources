@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Book extends Model {}
+class Book extends Model { }
+
+//ORM --> easy way to use tables.
 
 Book.init(
   {

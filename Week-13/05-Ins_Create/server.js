@@ -1,4 +1,5 @@
 const express = require('express');
+//routes is a middleware which is a function
 const routes = require('./routes');
 const sequelize = require('./config/connection');
 

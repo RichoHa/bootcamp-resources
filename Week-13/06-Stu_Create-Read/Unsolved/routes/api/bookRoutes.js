@@ -1,35 +1,36 @@
 const router = require('express').Router();
 const Book = require('../../models/Book');
 
-// TODO: Add a comment describing the purpose of this route
+// TODO: Get Response - routes/api/books/
 router.get('/', (req, res) => {
-  // TODO: Add a comment describing the functionality of this method
+  // TODO: Reads the whole table from the database (e.g. select * Table)
   Book.findAll().then((bookData) => {
     res.json(bookData);
   });
 });
 
-// TODO: Add a comment describing the purpose of this route
+// Get Response - routes/api/books/paperbacks
 router.get('/paperbacks', (req, res) => {
   Book.findAll({
-    // TODO: Add a comment describing the functionality of this property
+    // TODO: sort order of "title", a-z default
     order: ['title'],
-    // TODO: Add a comment describing the functionality of this property
+    // TODO: filtering query is_paperback
     where: {
       is_paperback: true
     },
     attributes: {
-      // TODO: Add a comment describing the functionality of this property
+      // TODO: leave out column is_paperback & edition
       exclude: ['is_paperback', 'edition']
     }
-  }).then((bookData) => {
+  }).then((bookData) => {  //return the search
     res.json(bookData);
   });
 });
 
-// TODO: Add a comment describing the purpose of this route
+// TODO: return get request for /"id"
 router.get('/:id', (req, res) => {
-  // TODO: Add a comment describing the functionality of this method
+  // TODO: find by primary key, by paramaters given after the /.
+  // return everything in the row with the matched id.
   Book.findByPk(req.params.id).then((bookData) => {
     res.json(bookData);
   });
