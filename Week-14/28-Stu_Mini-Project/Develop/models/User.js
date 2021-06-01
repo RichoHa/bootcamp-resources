@@ -2,40 +2,11 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-function User() {
-  this.numberOfPets = 0;
-  // Return this; "this" is set a new empty object and return when we use *new* keyword
-  //no return statement!
-}
-
-const user = new User(); //Get back a new empty object
-user.laugh() //Define laugh on the prototye of "user"
-//What is the prototype of user? user.__proto__===User.prototype{}
-//How do I add "laugh" to the User.prototype object?
-
-User.prototype.hasPets = function () {
-  console.log(this.numberOfPets > 0)
-}
-
-user.hasPets();
-
-console.log(user.__proto__);
-console.log(user.constructor);
-console.log(user instanceof User);
-
 class User extends Model {
-  // This instance method uses a conditional statement to check if a user has pets
-
-  hasPets() {
-    if (this.numberOfPets > 0) {
-      return true;
-    } else {
-      return false;
-    }
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
   }
 }
-
-// property on the User prototype, it's value is a function.
 
 User.init(
   {
@@ -45,7 +16,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -63,9 +34,6 @@ User.init(
       validate: {
         len: [8],
       },
-    },
-    numberOfPets: {
-      type: DataTypes.INTEGER,
     },
   },
   {
