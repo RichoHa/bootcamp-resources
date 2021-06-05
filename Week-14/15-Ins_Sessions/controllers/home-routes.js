@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
       res.render('homepage', {
         galleries,
         // We send over the current 'countVisit' session variable to be rendered
-        countVisit: req.session.countVisit,
+        countVisit: 0,
       });
     });
   } catch (err) {
