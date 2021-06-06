@@ -3,8 +3,12 @@
 const router = require('express').Router();
 
 // TODO: Add a comment describing the purpose of the get route
+// Express handling the get request from user clients.
+//  returning res.render("all")
 router.get('/', async (req, res) => {
-//TODO: Add a comment describing the purpose of the render method
+  //TODO: Add a comment describing the purpose of the render method
+  //compiles template from "all.handlebars"
+
   res.render('all');
 });
 
