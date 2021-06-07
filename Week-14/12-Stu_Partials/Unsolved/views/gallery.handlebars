@@ -2,8 +2,16 @@
   <h3 class="gallery-name">{{gallery.name}}</h3>
   <section class="flex-row justify-center">
 
-    {{#each gallery.paintings as |painting|}}
+    {{#each gallery.paintings as |Painting|}}
     <!-- TODO: Use the 'painting-details' partial to render each painting of the gallery -->
+    <section class="painting">
+      <img src="/images/{{Painting.filename}}" alt="{{Painting.description}}">
+      <div class="painting-details">
+        <h3>{{Painting.title}}</h3>
+        <p>{{Painting.description}}</p>
+      </div>
+    </section>
+
     {{/each}}
   </section>
 </section>
