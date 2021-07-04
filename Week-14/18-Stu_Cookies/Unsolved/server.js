@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 3001;
 
 // TODO: Add comments describing the implementation of sessions
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SECRET,
+  // Should put placed in the .env file
+
   // TODO: Add comments describing the implementation of cookies
   cookie: {},
   resave: false,

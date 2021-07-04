@@ -5,3 +5,7 @@
     <p>By: {{painting.artist}}</p>
   </div>
 </section>
+
+{{#each painting as |painting-details|}}
+{{> painting-details}}
+{{/each}}

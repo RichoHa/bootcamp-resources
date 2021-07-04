@@ -16,10 +16,23 @@ router.get('/', async (req, res) => {
     const galleries = dbGalleryData.map((gallery) =>
       gallery.get({ plain: true })
     );
+
     // TODO: Send over the 'loggedIn' session variable to the 'homepage' template
-    res.render('homepage', {
-      galleries,
+    req.session.save(() => {
+      // We set up a session variable to count the number of times we visit the homepage
+      if (req.session.countVisit) {
+        // If the 'countVisit' session variable already exists, increment it by 1
+        req.session.countVisit++;
+      } else {
+        // If the 'countVisit' session variable doesn't exist, set it to 1
+        req.session.countVisit = 1;
+      }
+
+      res.render('homepage', {
+        galleries,
+      });
     });
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -47,7 +60,7 @@ router.get('/gallery/:id', async (req, res) => {
 
     const gallery = dbGalleryData.get({ plain: true });
     // TODO: Send over the 'loggedIn' session variable to the 'gallery' template
-    res.render('gallery', { gallery });
+    res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
